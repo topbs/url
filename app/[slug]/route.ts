@@ -4,16 +4,17 @@ import { recordClick } from '@/lib/recorder';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;  
+  console.log('Received request for slug:', slug);
   const db = await getDb();
   const link = await db.get<{ id: number; destination: string }>(
     'SELECT id, destination FROM links WHERE slug = ?',
     slug
   );
   if (!link) {
-    return NextResponse.redirect('/404', 302);
+    return new NextResponse('Not found', { status: 404 });
   }
 
   const referrer = request.headers.get('referer');
