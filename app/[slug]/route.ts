@@ -4,9 +4,9 @@ import { recordClick } from '@/lib/recorder';
 
 export async function GET(
   request: NextRequest,
-  context: { params: { slug: string } }
+  { params }: { params: { slug: string } }
 ) {
-  const { slug } = await context.params;
+  const { slug } = await params;  
   const db = await getDb();
   const link = await db.get<{ id: number; destination: string }>(
     'SELECT id, destination FROM links WHERE slug = ?',
