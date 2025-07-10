@@ -3,7 +3,7 @@ import { getDb } from '@/lib/db';
 import { notFound } from 'next/navigation';
 
 type StatsByDay = { date: string; count: number };
-type Props = { params: { slug: string }; searchParams: { key?: string } };
+type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ key?: string }> };
 
 export default async function StatsPage({ params, searchParams }: Props) {
   const { slug } = await params;
