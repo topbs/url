@@ -19,7 +19,7 @@ export async function GET(
 
   const referrer = request.headers.get('referer');
   const userAgent = request.headers.get('user-agent');
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || null;
+  const ip = request.headers.get('x-internal-real-ip') || null;
   console.log(request.headers)
   await recordClick(link.id, referrer, userAgent, ip);
 

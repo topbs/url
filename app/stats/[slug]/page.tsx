@@ -36,11 +36,11 @@ export default async function StatsPage({ params, searchParams }: Props) {
 
   return (
     <div className="max-w-xl mx-auto p-4">
-      <h1 className="text-2xl mb-4">Статистика кликов</h1>
-      <p className="mb-2">Всего кликов: {totalClicks}</p>
+      <h1 className="text-2xl mb-4">Clicks stats</h1>
+      <p className="mb-2">Total clicks: {totalClicks}</p>
       <table className="w-full table-auto">
         <thead>
-          <tr><th className="px-2 py-1">Дата</th><th className="px-2 py-1">Клики</th></tr>
+          <tr><th className="px-2 py-1">Date</th><th className="px-2 py-1">Clicks</th></tr>
         </thead>
         <tbody>
           {byDay.map(({ date, count }) => (
