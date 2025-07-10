@@ -24,7 +24,7 @@ export default function Home() {
         setError(data.error || 'error');
       }
     } catch (err) {
-      setError('network error');
+      setError('network error: ' + (err instanceof Error ? err.message : 'unknown error'));
     }
   }
 
